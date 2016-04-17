@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using VintageVinyl.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,15 +17,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("VintageVinyl", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!-- This is the default links created-->
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Add Cosignor", "Cosignor", "Home")</li>
-                    <li>@Html.ActionLink("Add Album","Album", "Home")</li>
+                    <!-- Here are my links -->
+                    <li>@Html.ActionLink("Cosignor", "Index", "Cosignors")</li>
+                    <li>@Html.ActionLink("Album Page", "Index", "Albums")</li>
                 </ul>
             </div>
         </div>

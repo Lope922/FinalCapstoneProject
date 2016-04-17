@@ -10,6 +10,9 @@ namespace VintageVinyl.Models
     {
         public int ID { get; set; }
         public string AlbumName { get; set; }
+
+        public string Artist { get; set; }
+
         public DateTime DateIn { get; set; }
 
         // question mark allows nulls in this field ,because albums don't have a sell date yet 

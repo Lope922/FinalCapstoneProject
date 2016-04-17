@@ -13,7 +13,7 @@ namespace VintageVinyl.Models
         public string LastName { get; set; }
         public string FirstName { get; set; }
 
-        public decimal PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         // the virtual allows the properties of this class to be navigatable. This allows them to take advantage of certain entity frameworks functionality such as lazy loading 
         public virtual ICollection<Album> Albums { get; set; } 
 
