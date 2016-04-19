@@ -15,6 +15,7 @@ namespace VintageVinyl
 
             routes.MapRoute(
                 name: "Default",
+                //make url patterns modification here
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );

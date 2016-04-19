@@ -16,18 +16,31 @@ namespace VintageVinyl.Controllers
         private CosignorContext db = new CosignorContext();
 
         // GET: Albums
-        public ActionResult Index()
+        // trying out the search feature 
+        public ActionResult Index(string searchString)
         {
-            return View(db.Albums.ToList());
+            var albums = from a in db.Albums
+                select a;
+            // todo make modification if needed here. Test a couple of times. 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                // todo also add switch staments based on the selection type based on combo box selection. 
+                //  this only searches for the album. I would eventually like to add the ability to search by album title or artist from combobox selection 
+                albums = albums.Where(s => s.Artist.Contains(searchString));
+            }
+            return View(albums);
+            //return View(db.Albums.ToList());
         }
 
         // GET: Albums/Details/5
         public ActionResult Details(int? id)
         {
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             Album album = db.Albums.Find(id);
             if (album == null)
             {
