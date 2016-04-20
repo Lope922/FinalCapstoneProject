@@ -19,6 +19,10 @@ namespace VintageVinyl.DAL
         public DbSet<Album> Albums { get; set; }
         public DbSet<Cosignor> Cosignors { get; set; }
 
+        // todo checkup on invtory when i am able to complete the model between the two. If a model is even needed. 
+        public DbSet<Inventory> Inventories { get; set; }
+
+        // setting table creation rules
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // keeps the table names from becoming plural when the models are created using classes and Entity Framework

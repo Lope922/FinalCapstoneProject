@@ -17,16 +17,32 @@ namespace VintageVinyl.Controllers
 
         // GET: Albums
         // trying out the search feature 
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string albumNameq, string searchString)
         {
+            
+            var albumList = new List<string>();
+
+            // retries the list of albums from the db 
+            var albumsQuery = from d in db.Albums orderby d.AlbumName select d.AlbumName;
+
+            
+            albumList.AddRange(albumsQuery.Distinct());
+            ViewBag.albumName = new SelectList(albumList);
+
             var albums = from a in db.Albums
-                select a;
-            // todo make modification if needed here. Test a couple of times. 
+                         select a;
+            
+            //TODO refresh from if results is none and display there were no albums found 
             if (!String.IsNullOrEmpty(searchString))
             {
-                // todo also add switch staments based on the selection type based on combo box selection. 
+            
                 //  this only searches for the album. I would eventually like to add the ability to search by album title or artist from combobox selection 
                 albums = albums.Where(s => s.Artist.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(albumNameq))
+            {
+                albums = albums.Where(x => x.AlbumName == albumNameq);
             }
             return View(albums);
             //return View(db.Albums.ToList());

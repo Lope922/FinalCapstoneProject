@@ -10,6 +10,7 @@ namespace VintageVinyl.Models
     {
         //pk
         public int ID { get; set; }
+
         [Required]
         [Display(Name = "Last Name")]
         [StringLength(30)]

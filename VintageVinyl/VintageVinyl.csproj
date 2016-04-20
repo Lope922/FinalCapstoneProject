@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Cosignor.cs" />
+    <Compile Include="Models\Inventory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

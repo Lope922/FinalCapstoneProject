@@ -10,12 +10,16 @@
     @Html.ActionLink("Create New", "Create")
     <!-- added the ability to search here, as well as it's value
         Also beginForm = html form for input-->
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Index", "Albums", FormMethod.Get))
     {
-        <p> Title : @Html.TextBox("Search Artist") <br/>
+
+        <p>
+             AlbumName: @Html.DropDownList("albumName", "All")
+             Title : @Html.TextBox("SearchString") <br/>
+            <!-- filter button , used as a submit button for the form. -->
             <input type="submit" value="Filter"/>
         </p>
-    } <!-- TODO tomorrow looking at my todos should point me to pick up from here changing post to get method-->
+    } 
 
 </p>
 <table class="table">

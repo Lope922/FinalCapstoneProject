@@ -21,15 +21,15 @@ namespace VintageVinyl.DAL
             };
 
 
-            // lambda expression and for loop example used from Contoso University example
+            // lambda expression and for loop example used from Contoso University example to iterate over collection of items to add to database
             cosignors.ForEach(s => context.Cosignors.Add(s));
             context.SaveChanges();
 
             var albums = new List<Album>
             {
                 new Album
-                {AlbumName = "Kid A", Artist = "Radiohead", DateIn = DateTime.Parse("2009-09-01")},
-                new Album {AlbumName = "Beacon", Artist = "Two Door Cinema Club", DateIn = DateTime.Parse("2015-01-01")}
+                {AlbumName = "Kid A", Artist = "Radiohead", DateIn = DateTime.Parse("2009-09-01"), Price = 12.99m},
+                new Album {AlbumName = "Beacon", Artist = "Two Door Cinema Club", DateIn = DateTime.Parse("2015-01-01"), Price = 12.99m}
             };
             albums.ForEach(s => context.Albums.Add(s));
             context.SaveChanges();
