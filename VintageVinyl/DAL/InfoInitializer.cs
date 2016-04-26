@@ -29,7 +29,8 @@ namespace VintageVinyl.DAL
             {
                 new Album
                 {AlbumName = "Kid A", Artist = "Radiohead", DateIn = DateTime.Parse("2009-09-01")},
-                new Album {AlbumName = "Beacon", Artist = "Two Door Cinema Club", DateIn = DateTime.Parse("2015-01-01")}
+                new Album {AlbumName = "Beacon", Artist = "Two Door Cinema Club", DateIn = DateTime.Parse("2015-01-01")},
+				new Album {AlbumName = "Hell Freezes Over" , Artist = "The Eagles" , DateIn = DateTime.Parse("2016-04-26")}
             };
             albums.ForEach(s => context.Albums.Add(s));
             context.SaveChanges();

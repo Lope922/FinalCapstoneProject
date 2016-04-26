@@ -22,7 +22,7 @@ namespace VintageVinyl.Controllers
             var albums = from a in db.Albums
                 select a;
             // todo make modification if needed here. Test a couple of times. 
-            if (!String.IsNullOrEmpty(searchString))
+				if (!String.IsNullOrEmpty(searchString))
             {
                 // todo also add switch staments based on the selection type based on combo box selection. 
                 //  this only searches for the album. I would eventually like to add the ability to search by album title or artist from combobox selection 
