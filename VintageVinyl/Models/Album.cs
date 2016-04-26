@@ -20,6 +20,7 @@ namespace VintageVinyl.Models
         // validation applied directly to class property
         [Required]
         [StringLength(60, MinimumLength =2)]
+        [Display(Name="Album Name")]
         public string AlbumName { get; set; }
         
         [Required]
@@ -34,14 +35,11 @@ namespace VintageVinyl.Models
         [Required]
         [RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
         public decimal Price { get; set; }
-        //TODO modify this one i have the basics working. 
-         // would also like to add types , conidition , and initial price, 
+         // would also like to add genre , conidition , and initial price, 
 
         // the same functionality as in Cosignors through thier relationships allows Albums to interface with cosignors
         public virtual ICollection<Cosignor> Cosignors { get; set; }
-
-        // 
-        // [RegularExpression(@"^[A-Z+[a-zA-Z'' -\s]*$")]
+        
         // from here i am moving onto the DAL Data Access Layer
     }
 }

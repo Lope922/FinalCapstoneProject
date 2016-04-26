@@ -137,6 +137,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\AssociationTable.cs" />
     <Compile Include="Models\Cosignor.cs" />
     <Compile Include="Models\Inventory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,7 +7,7 @@ namespace VintageVinyl.DAL
 {
     public class CosignorContext : DbContext
     {
-        // todo rename context to something more meaningful once i see it implemented properly. 
+        // todo rename context to something more meaningful once I see it implemented properly. 
         // this Cosignor ext is being used 
         public CosignorContext() : base("CosignorContext")
         {

@@ -7,30 +7,21 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace VintageVinyl.Models
 {
-    public class Inventory : Cosignor
+    public class Inventory 
     {
-        // pk match 
+        // each item needs to have and id , which should be the album id 
+        // pk match  
         public int itemID { get; set; }
 
-        [ForeignKey("Cosigner.ID")]
-        // need the id of the cosigner that brought in the album
-        public int BroughtInBy { get; set; }
-
+        // that album id can be attatched to several different customers who brought in the album 
         // TODO finish builing this model so that i can begin adding test data to this table. 
         [ForeignKey("AlbumID")]
-        
-        public List<Album> Albums { get; set; }
-
-       
-        
-
     
-        // need the inital selling price agreed upon 
-    
+        // by the album id we should be able to grab all of those that do not have a sold date 
 
+        
     public virtual ICollection<Album> Albums { get; set; }
         public virtual ICollection<Cosignor> Cosignors { get; set; } 
     } 
 
     }
-}
