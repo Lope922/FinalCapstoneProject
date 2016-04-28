@@ -5,6 +5,7 @@ using VintageVinyl.Models;
 
 namespace VintageVinyl.DAL
 {
+	// Cosignor Context is the db connection inherited from the dbcontext class
     public class CosignorContext : DbContext
     {
         // todo rename context to something more meaningful once I see it implemented properly. 
