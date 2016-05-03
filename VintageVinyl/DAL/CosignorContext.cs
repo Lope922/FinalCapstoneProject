@@ -21,7 +21,7 @@ namespace VintageVinyl.DAL
         public DbSet<Cosignor> Cosignors { get; set; }
 
         // todo checkup on invtory when i am able to complete the model between the two. If a model is even needed. 
-        public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<AssociationTable> Inventory { get; set; }
 
         // setting table creation rules
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
