@@ -13,21 +13,21 @@ namespace VintageVinyl.Models
         public int ID { get; set; }
         
 		[Required]
-		[RegularExpression("^([A-z])$")]
         [Display(Name = "Last Name")]
         [StringLength(30)]
         public string LastName { get; set; }
 
-		[RegularExpression("^([A-z])$")]
         [Required]
         [Display(Name = "First Name")]
         [StringLength(30)]
         public string FirstName { get; set; }
 
         [Required]
-        // todo add regular expression and reprint the phone number displaying with parenthesis and dashes
-        [StringLength(10)]
+        // Todo add more functionality to varient inputs of phone number
+        //[StringLength(10)]
 		[Display(Name = "Phone Number")]
+		[DisplayFormat(DataFormatString = "{0:###-###-####}")]
+		[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
         
 		// the virtual allows the properties of this class to be navigatable. This allows them to take advantage of certain entity frameworks functionality such as lazy loading 

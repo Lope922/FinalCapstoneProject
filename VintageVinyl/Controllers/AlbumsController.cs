@@ -21,10 +21,9 @@ namespace VintageVinyl.Controllers
         {
             var albums = from a in db.Albums
                 select a;
-            // todo make modification if needed here. Test a couple of times. 
+           
 				if (!String.IsNullOrEmpty(searchString))
             {
-                // todo also add switch staments based on the selection type based on combo box selection. 
                 //  this only searches for the album. I would eventually like to add the ability to search by album title or artist from combobox selection 
                 albums = albums.Where(s => s.Artist.Contains(searchString));
             }
@@ -60,6 +59,8 @@ namespace VintageVinyl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+		
+		
         public ActionResult Create([Bind(Include = "ID,AlbumName,Artist,DateIn,DateOut")] Album album)
         {
             if (ModelState.IsValid)
@@ -72,6 +73,7 @@ namespace VintageVinyl.Controllers
             return View(album);
         }
 
+	
         // GET: Albums/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -92,12 +94,17 @@ namespace VintageVinyl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,AlbumName,Artist,DateIn,DateOut")] Album album)
+
+		//TODO fix this update issue after TDD tutorial
+		//NOTE removingDate out from price , because we don't want to change the date out price here in the EDIT VIEW 
+        public ActionResult Edit([Bind(Include = "AlbumName,Artist,Price")] Album album)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(album).State = EntityState.Modified;
                 db.SaveChanges();
+
+
                 return RedirectToAction("Index");
             }
             return View(album);

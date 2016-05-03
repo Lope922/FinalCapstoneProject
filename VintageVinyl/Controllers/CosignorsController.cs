@@ -11,6 +11,7 @@ using VintageVinyl.Models;
 
 namespace VintageVinyl.Controllers
 {
+	// this is the control layer. Here is where we make adjustments to the queries SQL / LINQ queries 
     public class CosignorsController : Controller
     {
         private CosignorContext db = new CosignorContext();
@@ -110,6 +111,7 @@ namespace VintageVinyl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+			//TODO try catch block here for any database errors 
             Cosignor cosignor = db.Cosignors.Find(id);
             db.Cosignors.Remove(cosignor);
             db.SaveChanges();

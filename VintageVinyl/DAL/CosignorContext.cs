@@ -8,8 +8,9 @@ namespace VintageVinyl.DAL
 	// Cosignor Context is the db connection inherited from the dbcontext class
     public class CosignorContext : DbContext
     {
-        // todo rename context to something more meaningful once i see it implemented properly. 
-        // this Cosignor ext is being used 
+        
+        // this Cosignor ext is being used for the connection string to the database for CRUD functionality. 
+
         public CosignorContext() : base("CosignorContext")
         {
             //Note This code creates a DbSet property for each entity set. In Entity Framework terminology, 

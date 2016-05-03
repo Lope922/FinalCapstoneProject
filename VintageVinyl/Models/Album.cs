@@ -18,7 +18,7 @@ namespace VintageVinyl.Models
         public int ID { get; set; }
         // validation applied directly to class property
         [Required]
-        [StringLength(60, MinimumLength =2)]
+        [StringLength(60, MinimumLength= 2)]
        // [RegularExpression(@"^[A-Z+[a-zA-Z'' -\s]*$")]
         public string AlbumName { get; set; }
 
@@ -32,10 +32,15 @@ namespace VintageVinyl.Models
 
         public DateTime DateIn { get; set; }
 
-        // question mark allows nulls in this field ,because albums don't have a sell date yet 
-        public DateTime? DateOut { get; set; }
 
-		public Condition Condition {get; set;}
+		// store in the inventory class 
+		//// question mark allows nulls in this field ,because albums don't have a sell date yet 
+		//public DateTime? DateOut { get; set; }
+
+		public Condition? Condition {get; set;}
+		
+		public double Price { get; set; }
+
 
 		// have a cosignorID mapped to the album number they own 
 		public int? CosinorID { get; set; }
@@ -44,7 +49,7 @@ namespace VintageVinyl.Models
         // want the same functionality as in Cosignors through thier relationships
         public virtual ICollection<Cosignor> Cosignors { get; set; } 
 
-		
+		// todo redo with just the basics. All i need is the price to be added. don't need date out until album is sold. So next make a webpage showing inventory. 
 
         // from here i am moving onto the DAL [Data Access Layer]
     }

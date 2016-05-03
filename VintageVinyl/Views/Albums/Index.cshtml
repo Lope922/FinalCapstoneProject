@@ -32,8 +32,10 @@
             @Html.DisplayNameFor(model => model.DateIn)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateOut)
+            @Html.DisplayNameFor(model => model.Price)
         </th>
+<!-- NOTE: removing date out from model here -->
+        
         <th></th>
     </tr>
 
@@ -49,8 +51,9 @@
             @Html.DisplayFor(modelItem => item.DateIn)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateOut)
+            @Html.DisplayFor(modelItem => item.Price)
         </td>
+<!-- NOTE -- Removing from model here as well -->
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
