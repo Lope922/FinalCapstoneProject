@@ -9,17 +9,18 @@ namespace VintageVinyl.Models
     public class Cosignor
     {
         //pk
-        public int ID { get; set; }
+        [Key]
+        public int CosignorID { get; set; }
+        
+        [Required]
+        [Display(Name = "First Name")]
+        [StringLength(30)]
+        public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
         [StringLength(30)]
         public string LastName { get; set; }
-
-        [Required]
-        [Display(Name = "First Name")]
-        [StringLength(30)]
-        public string FirstName { get; set; }
 
         [Required]
         // todo add regular expression and reprint the phone number displaying with parenthesis and dashes

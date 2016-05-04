@@ -11,136 +11,117 @@ using VintageVinyl.Models;
 
 namespace VintageVinyl.Controllers
 {
-    public class AlbumsController : Controller
+    public class AssociationTablesController : Controller
     {
         private CosignorContext db = new CosignorContext();
 
-        // GET: Albums
-        // trying out the search feature 
-        public ActionResult Index(string albumNameq, string searchString)
-        {
-            
-            var albumList = new List<string>();
-
-            // retries the list of albums from the db 
-            var albumsQuery = from d in db.Albums orderby d.AlbumName select d.AlbumName;
-
-            
-            albumList.AddRange(albumsQuery.Distinct());
-            ViewBag.albumName = new SelectList(albumList);
-
-            var albums = from a in db.Albums
-                         select a;
-            
-            //TODO refresh from if results is none and display there were no albums found 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-            
-                //  this only searches for the album. I would eventually like to add the ability to search by album title or artist from combobox selection 
-                albums = albums.Where(s => s.Artist.Contains(searchString));
-            }
-
-            if (!string.IsNullOrEmpty(albumNameq))
-            {
-                albums = albums.Where(x => x.AlbumName == albumNameq);
-            }
-            return View(albums);
-            //return View(db.Albums.ToList());
-        }
-
-        // GET: Albums/Details/5
-        public ActionResult Details(int? id)
+        // GET: AssociationTables
+        public ActionResult Index()
         {
            
+            var inventory = db.Inventory.Include(a => a.Albums);
+            var peeps = db.Inventory.Include(b => b.Cosignors);
+            //return View(inventory.ToList()); // peeps.ToList());
+            return View(peeps.ToList()); // peeps.ToList());
+        }
+
+        // GET: AssociationTables/Details/5
+        public ActionResult Details(int? id)
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-            Album album = db.Albums.Find(id);
-            if (album == null)
+            AssociationTable associationTable = db.Inventory.Find(id);
+            if (associationTable == null)
             {
                 return HttpNotFound();
             }
-            return View(album);
+            return View(associationTable);
         }
 
-        // GET: Albums/Create
+        // GET: AssociationTables/Create
         public ActionResult Create()
         {
+            //todo check up on this here 
+            ViewBag.CosignorID = new SelectList(db.Cosignors, "FirstName","CosignorID");
+       //     ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist");
             return View();
         }
 
-        // POST: Albums/Create
+        // POST: AssociationTables/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,AlbumName,Artist,DateIn,DateOut")] Album album)
+        public ActionResult Create([Bind(Include = "ItemNum,CosignerID,AlbumID,Price,DateSold")] AssociationTable associationTable)
         {
             if (ModelState.IsValid)
             {
-                db.Albums.Add(album);
+                db.Inventory.Add(associationTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(album);
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist", associationTable.AlbumID);
+            return View(associationTable);
         }
 
-        // GET: Albums/Edit/5
+        // GET: AssociationTables/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = db.Albums.Find(id);
-            if (album == null)
+            AssociationTable associationTable = db.Inventory.Find(id);
+            if (associationTable == null)
             {
                 return HttpNotFound();
             }
-            return View(album);
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist", associationTable.AlbumID);
+            return View(associationTable);
         }
 
-        // POST: Albums/Edit/5
+        // POST: AssociationTables/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AlbumID,AlbumName,Artist,DateIn")] Album album)
+        public ActionResult Edit([Bind(Include = "ItemNum,CosignerID,AlbumID,Price,DateSold")] AssociationTable associationTable)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(album).State = EntityState.Modified;
+                db.Entry(associationTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(album);
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist", associationTable.AlbumID);
+            return View(associationTable);
         }
 
-        // GET: Albums/Delete/5
+        // GET: AssociationTables/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = db.Albums.Find(id);
-            if (album == null)
+            AssociationTable associationTable = db.Inventory.Find(id);
+            if (associationTable == null)
             {
                 return HttpNotFound();
             }
-            return View(album);
+            return View(associationTable);
         }
 
-        // POST: Albums/Delete/5
+        // POST: AssociationTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Album album = db.Albums.Find(id);
-            db.Albums.Remove(album);
+            AssociationTable associationTable = db.Inventory.Find(id);
+            db.Inventory.Remove(associationTable);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,4 +1,4 @@
-﻿@model VintageVinyl.Models.Album
+﻿@model VintageVinyl.Models.AssociationTable
 
 @{
     ViewBag.Title = "Delete";
@@ -8,31 +8,39 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Album</h4>
+    <h4>AssociationTable</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AlbumName)
+            @Html.DisplayNameFor(model => model.Albums.Artist)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AlbumName)
+            @Html.DisplayFor(model => model.Albums.Artist)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Artist)
+            @Html.DisplayNameFor(model => model.CosignerID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Artist)
+            @Html.DisplayFor(model => model.CosignerID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateIn)
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DateIn)
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSold)
         </dd>
 
     </dl>

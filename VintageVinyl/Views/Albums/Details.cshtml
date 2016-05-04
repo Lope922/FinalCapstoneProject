@@ -34,17 +34,11 @@
             @Html.DisplayFor(model => model.DateIn)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOut)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOut)
-        </dd>
-
+    
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+  
+    @Html.ActionLink("Edit", "Edit", new {id = Model.AlbumID}) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
+    <Compile Include="Controllers\AssociationTablesController.cs" />
     <Compile Include="Controllers\CosignorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\CosignorContext.cs" />
@@ -144,7 +145,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="Views\favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -186,6 +187,12 @@
     <Content Include="Views\Cosignors\Details.cshtml" />
     <Content Include="Views\Cosignors\Edit.cshtml" />
     <Content Include="Views\Cosignors\Index.cshtml" />
+    <Content Include="Views\AssociationTables\Create.cshtml" />
+    <Content Include="Views\AssociationTables\Delete.cshtml" />
+    <Content Include="Views\AssociationTables\Details.cshtml" />
+    <Content Include="Views\AssociationTables\Edit.cshtml" />
+    <Content Include="Views\AssociationTables\Index.cshtml" />
+    <Content Include="Views\Inventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

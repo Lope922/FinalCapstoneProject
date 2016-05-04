@@ -47,7 +47,7 @@ namespace VintageVinyl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,LastName,FirstName,PhoneNumber")] Cosignor cosignor)
+        public ActionResult Create([Bind(Include = "CosignorID,LastName,FirstName,PhoneNumber")] Cosignor cosignor)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace VintageVinyl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,LastName,FirstName,PhoneNumber")] Cosignor cosignor)
+        public ActionResult Edit([Bind(Include = "CosignorID,LastName,FirstName,PhoneNumber")] Cosignor cosignor)
         {
             if (ModelState.IsValid)
             {

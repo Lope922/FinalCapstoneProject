@@ -28,8 +28,8 @@ namespace VintageVinyl.DAL
             var albums = new List<Album>
             {
                 new Album
-                {AlbumName = "Kid A", Artist = "Radiohead", DateIn = DateTime.Parse("2009-09-01"), Price = 12.99m},
-                new Album {AlbumName = "Beacon", Artist = "Two Door Cinema Club", DateIn = DateTime.Parse("2015-01-01"), Price = 12.99m}
+                {AlbumName = "Kid A", Artist = "Radiohead", DateIn = DateTime.Parse("2009-09-01")},
+                new Album {AlbumName = "Beacon", Artist = "Two Door Cinema Club", DateIn = DateTime.Parse("2015-01-01")}
             };
             albums.ForEach(s => context.Albums.Add(s));
             context.SaveChanges();

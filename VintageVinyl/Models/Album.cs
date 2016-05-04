@@ -10,7 +10,8 @@ namespace VintageVinyl.Models
     public class Album
     {
         // pk should auto increment the pk id 
-        public int ID { get; set; }
+        [Key]
+        public int AlbumID { get; set; }
 
 
         [Required]
@@ -30,11 +31,11 @@ namespace VintageVinyl.Models
         public DateTime DateIn { get; set; }
 
         // question mark allows nulls in this field ,because albums don't have a sell date yet 
-        public DateTime? DateOut { get; set; }
+        //public DateTime? DateOut { get; set; }
 
-        [Required]
-        [RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
-        public decimal Price { get; set; }
+        //[Required]
+        //[RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
+        //public decimal Price { get; set; }
          // would also like to add genre , conidition , and initial price, 
 
         // the same functionality as in Cosignors through thier relationships allows Albums to interface with cosignors
