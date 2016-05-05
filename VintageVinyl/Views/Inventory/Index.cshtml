@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<VintageVinyl.Models.AssociationTable>
 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -9,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Albums.Artist)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CosignerID)
+            @Html.DisplayNameFor(model => model.Cosignors.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -26,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.Albums.Artist)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CosignerID)
+            @Html.DisplayFor(modelItem => item.Cosignors.FirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)

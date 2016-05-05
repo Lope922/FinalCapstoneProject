@@ -15,10 +15,11 @@ namespace VintageVinyl.Models
         [Key]  
         public int ItemNum { get; set; }
 
-       // [ForeignKey("Cosignor")]
+        [Required]       
+        [ForeignKey("Cosignors")]
         public int CosignorID { get; set; }
-
-     //   [ForeignKey("AlbumID")]
+        [Required]
+        [ForeignKey("Albums")]
         public int AlbumID { get; set; }
         // price agreed to. Later this should be based on the condition 
 
@@ -26,6 +27,7 @@ namespace VintageVinyl.Models
         [RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
         public double Price { get; set; }
 
+        // optional. Only needs to be added when item is sold. 
         public DateTime? DateSold { get; set; }
 
         public virtual Cosignor Cosignors { get; set; } 

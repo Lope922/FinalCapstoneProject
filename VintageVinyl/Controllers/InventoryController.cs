@@ -11,21 +11,18 @@ using VintageVinyl.Models;
 
 namespace VintageVinyl.Controllers
 {
-    public class AssociationTablesController : Controller
+    public class InventoryController : Controller
     {
         private CosignorContext db = new CosignorContext();
 
-        // GET: AssociationTables
+        // GET: Inventory
         public ActionResult Index()
         {
-           
-            var inventory = db.Inventory.Include(a => a.Albums);
-            var peeps = db.Inventory.Include(b => b.Cosignors);
-            //return View(inventory.ToList()); // peeps.ToList());
-            return View(peeps.ToList()); // peeps.ToList());
+            var inventory = db.Inventory.Include(a => a.Albums).Include(a => a.Cosignors);
+            return View(inventory.ToList());
         }
 
-        // GET: AssociationTables/Details/5
+        // GET: Inventory/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,21 +37,20 @@ namespace VintageVinyl.Controllers
             return View(associationTable);
         }
 
-        // GET: AssociationTables/Create
+        // GET: Inventory/Create
         public ActionResult Create()
         {
-            //todo check up on this here 
-            ViewBag.CosignorID = new SelectList(db.Cosignors, "FirstName","CosignorID");
-       //     ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist");
+            ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist");
+            ViewBag.CosignorID = new SelectList(db.Cosignors, "CosignorID", "FirstName");
             return View();
         }
 
-        // POST: AssociationTables/Create
+        // POST: Inventory/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CosignerID,AlbumID,Price,DateSold")] AssociationTable associationTable)
+        public ActionResult Create([Bind(Include = "ItemNum,CosignorID,AlbumID,Price,DateSold")] AssociationTable associationTable)
         {
             if (ModelState.IsValid)
             {
@@ -64,10 +60,11 @@ namespace VintageVinyl.Controllers
             }
 
             ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist", associationTable.AlbumID);
+            ViewBag.CosignorID = new SelectList(db.Cosignors, "CosignorID", "FirstName", associationTable.CosignorID);
             return View(associationTable);
         }
 
-        // GET: AssociationTables/Edit/5
+        // GET: Inventory/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,15 +77,16 @@ namespace VintageVinyl.Controllers
                 return HttpNotFound();
             }
             ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist", associationTable.AlbumID);
+            ViewBag.CosignorID = new SelectList(db.Cosignors, "CosignorID", "FirstName", associationTable.CosignorID);
             return View(associationTable);
         }
 
-        // POST: AssociationTables/Edit/5
+        // POST: Inventory/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemNum,CosignerID,AlbumID,Price,DateSold")] AssociationTable associationTable)
+        public ActionResult Edit([Bind(Include = "ItemNum,CosignorID,AlbumID,Price,DateSold")] AssociationTable associationTable)
         {
             if (ModelState.IsValid)
             {
@@ -97,10 +95,11 @@ namespace VintageVinyl.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AlbumID = new SelectList(db.Albums, "AlbumID", "Artist", associationTable.AlbumID);
+            ViewBag.CosignorID = new SelectList(db.Cosignors, "CosignorID", "FirstName", associationTable.CosignorID);
             return View(associationTable);
         }
 
-        // GET: AssociationTables/Delete/5
+        // GET: Inventory/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,7 +114,7 @@ namespace VintageVinyl.Controllers
             return View(associationTable);
         }
 
-        // POST: AssociationTables/Delete/5
+        // POST: Inventory/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
