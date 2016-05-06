@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using VintageVinyl.DAL;
 using VintageVinyl.Models;
+using System.Data.Sql; 
 
 namespace VintageVinyl.Controllers
 {
@@ -81,8 +82,16 @@ namespace VintageVinyl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Album album = db.Albums.Find(id);
-            if (album == null)
+			var albumToUpdate = db.Albums.Find(id);
+			var album = db.Albums.Find(id);
+			if (TryUpdateModel(albumToUpdate, "", new string[] { "AlbumName", "Artist", "Price", "DateIn" }))
+
+
+				db.Entry(album).State = EntityState.Modified;
+
+				db.SaveChanges();
+
+			if (album == null)
             {
                 return HttpNotFound();
             }
@@ -96,15 +105,18 @@ namespace VintageVinyl.Controllers
         [ValidateAntiForgeryToken]
 
 		//TODO fix this update issue after TDD tutorial
-		//NOTE removingDate out from price , because we don't want to change the date out price here in the EDIT VIEW 
-        public ActionResult Edit([Bind(Include = "AlbumName,Artist,Price")] Album album)
+		//NOTE removingDate out from Edit , because we don't want to change the date out price here in the EDIT VIEW 
+        public ActionResult Edit([Bind(Include = "ID,AlbumName,Artist,Price,DateIn")] Album album)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(album).State = EntityState.Modified;
-                db.SaveChanges();
+				try{
 
-
+					
+				}
+				catch(System.Data.SqlClient.SqlException err)
+					{Console.WriteLine(err.ToString());
+					}
                 return RedirectToAction("Index");
             }
             return View(album);

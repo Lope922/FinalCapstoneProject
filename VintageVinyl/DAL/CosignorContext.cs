@@ -20,6 +20,7 @@ namespace VintageVinyl.DAL
         // allows objects to be manipulated like datasets from query results. 
         public DbSet<Album> Albums { get; set; }
         public DbSet<Cosignor> Cosignors { get; set; }
+		public DbSet<InventoryManagment> Inventory { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
