@@ -22,13 +22,14 @@ namespace VintageVinyl.Controllers
             
             var albumList = new List<string>();
 
-            // retries the list of albums from the db 
+            // retries the list of albums from the db using LINQ 
             var albumsQuery = from d in db.Albums orderby d.AlbumName select d.AlbumName;
 
             
             albumList.AddRange(albumsQuery.Distinct());
             ViewBag.albumName = new SelectList(albumList);
 
+            // Again using a small LINQ Query to retrieve all of the albums from the db context
             var albums = from a in db.Albums
                          select a;
             

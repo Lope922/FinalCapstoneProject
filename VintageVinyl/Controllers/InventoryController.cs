@@ -11,6 +11,9 @@ using VintageVinyl.Models;
 
 namespace VintageVinyl.Controllers
 {
+    /// <summary>
+    /// No Meta data available yet . This is also a test
+    /// </summary>
     public class InventoryController : Controller
     {
         private CosignorContext db = new CosignorContext();
@@ -23,6 +26,7 @@ namespace VintageVinyl.Controllers
         }
 
         // GET: Inventory/Details/5
+        //TODO adjust query and web page layout as needed. 
         public ActionResult Details(int? id)
         {
             if (id == null)

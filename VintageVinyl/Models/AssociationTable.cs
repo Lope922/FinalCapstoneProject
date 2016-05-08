@@ -19,10 +19,13 @@ namespace VintageVinyl.Models
         [ForeignKey("Cosignors")]
         public int CosignorID { get; set; }
         [Required]
-        [ForeignKey("Albums")]
+       
+        [ForeignKey("Albums")] 
+        // album ids must be unique. Cosginor not allowed to bring in multiple of the same albums. 
         public int AlbumID { get; set; }
-        // price agreed to. Later this should be based on the condition 
 
+
+        // price agreed to. Later this should be based on the condition 
         [Required]
         [RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
         public double Price { get; set; }
