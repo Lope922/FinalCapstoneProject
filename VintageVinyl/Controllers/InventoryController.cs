@@ -19,13 +19,44 @@ namespace VintageVinyl.Controllers
 
         // GET: Inventory
 		// todo handle any errors that may be thrown due to unability to reach the servery 
-        public ActionResult Index()
-        {
+		public ActionResult Index()
+		{
 			//todo fix this issue here I believe the issue is with the connection string causing this error 
-            var inventory = db.Inventory.Include(a => a.Albums).Include(a => a.Cosignors);
+			var inventory = db.Inventory.Include(a => a.Albums).Include(a => a.Cosignors);
+
+			return View(inventory.ToList());
+		}
+
+		public ActionResult Test()
+		{
+			
+			using (var context = new CosignorContext())
+			{
+				//
+			//	one query to get the fk object properties from cosignors and albums class. using a lambda expression to process the LINQ query , 
+				// this can also be accomplished using sql queries , that in the end also process as lamda expressions. 
+				
+				var variable1 = context.Inventory.Include(a => a.Albums).Include(a => a.Cosignors).ToList();	
+				
+				
+				// fix this sql query then turn it into a proper linq query
+
+
+				var sortedInventory = context.Inventory.SqlQuery("Select ItemNum, CosignorID, AlbumID, Price, DateSold from AssociationTables where DateSold IS Null Order by CosignorID");
+
+				ViewBag.FkTable = variable1; 
+
+				ViewBag.InvSorted = sortedInventory ; 
+				// todo look up how to return a view two different objects. 
+				//View data is as Dictionary passed to as view
+				//return ViewData(sortedInventory, variable1); 
+				return (View(ViewBag));
+				//return View(sortedInventory); 
+			}
+		}
+
 		
-            return View(inventory.ToList());
-        }
+
 
         // GET: Inventory/Details/5
         public ActionResult Details(int? id)
@@ -75,6 +106,7 @@ namespace VintageVinyl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             AssociationTable associationTable = db.Inventory.Find(id);
             if (associationTable == null)
             {

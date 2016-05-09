@@ -28,18 +28,16 @@ namespace VintageVinyl.Models
         // price agreed to. Later this should be based on the condition 
 
         [Required]
-        [RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
-		[StringLength(4)] 
-		
-		// todo check validation of this input 
-        public double Price { get; set; }
+        //[RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
+        [DataType(DataType.Currency)]
+		public double Price { get; set; }
+
 
 
         // optional. Only needs to be added when item is sold. to be used as a later for sold display page.  
         public DateTime? DateSold { get; set; }
 
         public virtual Cosignor Cosignors { get; set; } 
-        public virtual Album Albums { get; set; } 
-
-    }
+        public virtual Album Albums { get; set; }
+   }
 }

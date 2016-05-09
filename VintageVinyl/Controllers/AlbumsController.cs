@@ -22,7 +22,7 @@ namespace VintageVinyl.Controllers
             
             var albumList = new List<string>();
 
-            // retries the list of albums from the db 
+            // retrieves the list of albums from the db 
             var albumsQuery = from d in db.Albums orderby d.AlbumName select d.AlbumName;
 
             

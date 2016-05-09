@@ -28,6 +28,7 @@ namespace VintageVinyl.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Cosignor cosignor = db.Cosignors.Find(id);
             if (cosignor == null)
             {
@@ -43,8 +44,7 @@ namespace VintageVinyl.Controllers
         }
 
         // POST: Cosignors/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CosignorID,LastName,FirstName,PhoneNumber")] Cosignor cosignor)
@@ -76,7 +76,6 @@ namespace VintageVinyl.Controllers
 
         // POST: Cosignors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CosignorID,LastName,FirstName,PhoneNumber")] Cosignor cosignor)
