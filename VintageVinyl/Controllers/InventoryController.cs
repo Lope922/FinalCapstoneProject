@@ -13,12 +13,17 @@ namespace VintageVinyl.Controllers
 {
     public class InventoryController : Controller
     {
+
+		
         private CosignorContext db = new CosignorContext();
 
         // GET: Inventory
+		// todo handle any errors that may be thrown due to unability to reach the servery 
         public ActionResult Index()
         {
+			//todo fix this issue here I believe the issue is with the connection string causing this error 
             var inventory = db.Inventory.Include(a => a.Albums).Include(a => a.Cosignors);
+		
             return View(inventory.ToList());
         }
 
@@ -46,8 +51,7 @@ namespace VintageVinyl.Controllers
         }
 
         // POST: Inventory/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		// binding properties to prevent overposting attacks. 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ItemNum,CosignorID,AlbumID,Price,DateSold")] AssociationTable associationTable)
@@ -82,8 +86,7 @@ namespace VintageVinyl.Controllers
         }
 
         // POST: Inventory/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       // binding properties to prevent overposting attacks. 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ItemNum,CosignorID,AlbumID,Price,DateSold")] AssociationTable associationTable)

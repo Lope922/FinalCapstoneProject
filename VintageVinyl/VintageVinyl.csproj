@@ -129,7 +129,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
-    <Compile Include="Controllers\AssociationTablesController.cs" />
     <Compile Include="Controllers\CosignorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
@@ -188,22 +187,11 @@
     <Content Include="Views\Cosignors\Details.cshtml" />
     <Content Include="Views\Cosignors\Edit.cshtml" />
     <Content Include="Views\Cosignors\Index.cshtml" />
-    <Content Include="Views\AssociationTables\Create.cshtml" />
-    <Content Include="Views\AssociationTables\Delete.cshtml" />
-    <Content Include="Views\AssociationTables\Details.cshtml" />
-    <Content Include="Views\AssociationTables\Edit.cshtml" />
-    <Content Include="Views\AssociationTables\Index.cshtml" />
     <Content Include="Views\Inventory\Create.cshtml" />
     <Content Include="Views\Inventory\Delete.cshtml" />
     <Content Include="Views\Inventory\Details.cshtml" />
     <Content Include="Views\Inventory\Edit.cshtml" />
     <Content Include="Views\Inventory\Index.cshtml" />
-    <Content Include="Views\InventoryFeature2\InventoryFeature2.cshtml" />
-    <Content Include="Views\InventoryFeature2\Create.cshtml" />
-    <Content Include="Views\InventoryFeature2\Delete.cshtml" />
-    <Content Include="Views\InventoryFeature2\Details.cshtml" />
-    <Content Include="Views\InventoryFeature2\Edit.cshtml" />
-    <Content Include="Views\InventoryFeature2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

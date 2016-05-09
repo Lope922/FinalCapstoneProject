@@ -15,19 +15,27 @@ namespace VintageVinyl.Models
         [Key]  
         public int ItemNum { get; set; }
 
+		//todo update model to display names properly. Also fix layout of index view to display the owner first 
         [Required]       
         [ForeignKey("Cosignors")]
+		[Display(Name = "Owner")]
         public int CosignorID { get; set; }
-        [Required]
+        
+		[Required]
+		[Display(Name = "Arists")]
         [ForeignKey("Albums")]
         public int AlbumID { get; set; }
         // price agreed to. Later this should be based on the condition 
 
         [Required]
         [RegularExpression(@"^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$")]
+		[StringLength(4)] 
+		
+		// todo check validation of this input 
         public double Price { get; set; }
 
-        // optional. Only needs to be added when item is sold. 
+
+        // optional. Only needs to be added when item is sold. to be used as a later for sold display page.  
         public DateTime? DateSold { get; set; }
 
         public virtual Cosignor Cosignors { get; set; } 
