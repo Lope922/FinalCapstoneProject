@@ -16,7 +16,8 @@ namespace VintageVinyl.Tests.Features
 			//arrange 
 			new Cosignor {FirstName="Carlos" , LastName= "Lopez",PhoneNumber="6542223333"};
 
-			var mockContext = new Mock<ControllerContext>();
+			//TODO finish this test using mock or unit test nuget package suggested. 
+			//var mockContext = new Mock<ControllerContext>();
 
 
 		}
