@@ -8,3 +8,7 @@ This is my first ASP.NET app that i am building using MVC and Entity Framework.
     The store then attempts to sell the ablums within 30 days. If sold the cosinor that has brought in the album is entitled to a portion of the sales. 
     Else if the Albums have not sold within 30 days they are either returned to the owner or donated. More features may be added later. 
     Those are just the basics of this app. 
+
+Visual Studio should resolve any project dependencies, however the Nuget packages I installed were 
+MVC 5, EF 6 (Entity Framework) , Nunit, and Moq ( Nunit and Moq not fully implemented in testing yet ). 
+
