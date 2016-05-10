@@ -9,6 +9,18 @@ This is my first ASP.NET app that i am building using MVC and Entity Framework.
     Else if the Albums have not sold within 30 days they are either returned to the owner or donated. More features may be added later. 
     Those are just the basics of this app. 
 
+
+    
+-- Dependencies -- 
 Visual Studio should resolve any project dependencies, however the Nuget packages I installed were 
-MVC 5, EF 6 (Entity Framework) , Nunit, and Moq ( Nunit and Moq not fully implemented in testing yet ). 
+ -MVC 5
+ -EF 6 (Entity Framework) 
+ -Microsoft Sql server local db - should be included with Visual Studio - If not Sql Server Express will do - see msdn dev site for 
+ connection string documentation. 
+ -.NET 4.5.2 framework 
+ 
+ 
+ , Nunit, and Moq ( Nunit and Moq not fully implemented in testing yet ). 
+
+
 
