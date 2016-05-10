@@ -10,7 +10,7 @@ namespace VintageVinyl.Models
 {
     // association table that combines owners with albums they have brought in. 
     public class AssociationTable
-    {   //todo pick up from here 
+    {
         //pk      
         [Key]  
         public int ItemNum { get; set; }

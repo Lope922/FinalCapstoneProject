@@ -32,7 +32,7 @@ namespace VintageVinyl.Controllers
             var albums = from a in db.Albums
                          select a;
             
-            //TODO refresh from if results is none and display there were no albums found 
+            
             if (!String.IsNullOrEmpty(searchString))
             {
             

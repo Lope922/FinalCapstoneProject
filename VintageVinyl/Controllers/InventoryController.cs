@@ -21,12 +21,14 @@ namespace VintageVinyl.Controllers
 		// todo handle any errors that may be thrown due to unability to reach the servery 
 		public ActionResult Index()
 		{
-			//todo fix this issue here I believe the issue is with the connection string causing this error 
+			
 			var inventory = db.Inventory.Include(a => a.Albums).Include(a => a.Cosignors);
 
 			return View(inventory.ToList());
 		}
 
+
+		// note this test is still in development 
 		public ActionResult Test()
 		{
 			
@@ -47,16 +49,14 @@ namespace VintageVinyl.Controllers
 				ViewBag.FkTable = variable1; 
 
 				ViewBag.InvSorted = sortedInventory ; 
-				// todo look up how to return a view two different objects. 
+				
+				// todo look up how to return a view two different datasets  
 				//View data is as Dictionary passed to as view
 				//return ViewData(sortedInventory, variable1); 
 				return (View(ViewBag));
 				//return View(sortedInventory); 
 			}
 		}
-
-		
-
 
         // GET: Inventory/Details/5
         public ActionResult Details(int? id)

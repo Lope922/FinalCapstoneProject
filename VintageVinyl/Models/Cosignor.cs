@@ -26,8 +26,9 @@ namespace VintageVinyl.Models
         public string LastName { get; set; }
 
         [Required]
-        // todo add regular expression and reprint the phone number displaying with parenthesis and dashes
         [StringLength(10)]
+		[MinLength(10)]
+		[DisplayFormat(DataFormatString = "{0:###-###-####}", ApplyFormatInEditMode = true)]
         public string PhoneNumber { get; set; }
 
 
