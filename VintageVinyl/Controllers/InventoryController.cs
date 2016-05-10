@@ -23,7 +23,7 @@ namespace VintageVinyl.Controllers
 		{
 			
 			var inventory = db.Inventory.Include(a => a.Albums).Include(a => a.Cosignors);
-
+			//ViewData testobj = new DbSet<inventory.Where(b => b.DateSold());
 			return View(inventory.ToList());
 		}
 
